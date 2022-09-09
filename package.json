@@ -32,6 +32,7 @@
   },
   "dependencies": {
     "@opentelemetry/api": "^1.1.0",
+    "@opentelemetry/exporter-trace-otlp-http": "^0.32.0",
     "@opentelemetry/exporter-zipkin": "^1.6.0",
     "@opentelemetry/instrumentation-express": "^0.30.0",
     "@opentelemetry/instrumentation-http": "^0.32.0",
