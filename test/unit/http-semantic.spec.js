@@ -4,7 +4,7 @@ const {
   newHttpInstrumantationConfig,
   Shared,
   SessionData,
-  HTTPSemanticDelegater,
+  HTTPTracerDelegator,
 } = require('../../lib/http-semantic');
 const {
   InMemorySpanExporter,
@@ -116,7 +116,7 @@ describe('HttpInstrumentation', function() {
   });
 });
 
-describe('HTTPSemanticDelegater', function() {
+describe('HTTPTracerDelegator', function() {
   let memoryExporter;
   let provider;
   let span;
@@ -135,7 +135,7 @@ describe('HTTPSemanticDelegater', function() {
     provider.addSpanProcessor(new SimpleSpanProcessor(memoryExporter));
     span = provider.getTracer('default').startSpan('root');
     shared = new Shared();
-    sut = new HTTPSemanticDelegater(['deviceName', 'app'], shared);
+    sut = new HTTPTracerDelegator(['deviceName', 'app'], shared);
   });
 
   describe('delegateCreateSession', function() {
