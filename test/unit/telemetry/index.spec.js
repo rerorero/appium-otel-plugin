@@ -1,4 +1,4 @@
-const { capabilitiesToAttributes } = require('../../lib/telemetry.js');
+const { capabilitiesToAttributes } = require('../../../lib/telemetry');
 const chai = require('chai');
 const { assert } = chai;
 
@@ -25,3 +25,4 @@ describe('capabilitiesToAttributes', function() {
     assert.deepEqual(actual, expected);
   });
 });
+

@@ -1,4 +1,4 @@
-const { Delegator } = require('../../lib/semantic.js');
+const { Delegator } = require('../../lib/delegator');
 const { OpenTelemetryPlugin } = require('../../lib/plugin.js');
 import chai from 'chai';
 const should = chai.should();

@@ -5,7 +5,7 @@ const {
   Shared,
   SessionData,
   HTTPTracerDelegator,
-} = require('../../lib/http-semantic');
+} = require('../../../lib/trace/http-semantic');
 const {
   InMemorySpanExporter,
   SimpleSpanProcessor,
