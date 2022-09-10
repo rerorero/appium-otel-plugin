@@ -1,4 +1,4 @@
-const { Delegator } = require('../../lib/delegator');
+const { Delegator } = require('../../lib/appium');
 const { OpenTelemetryPlugin } = require('../../lib/plugin.js');
 import chai from 'chai';
 const should = chai.should();
