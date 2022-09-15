@@ -52,8 +52,7 @@
     "deep-equal-in-any-order": "^2.0.0",
     "eslint": "^7.32.0",
     "mocha": "^10.0.0",
-    "sinon": "^14.0.0",
-    "webdriverio": "^7.24.0"
+    "sinon": "^14.0.0"
   },
   "engines": {
     "node": ">=14",

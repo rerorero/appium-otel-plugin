@@ -26,8 +26,9 @@ describe('OpenTelemetryPlugin', function() {
     const delegators = [
       new FakeDelegator(1, actions),
       new FakeDelegator(2, actions),
-    ]
-    const next = async () => { 
+    ];
+    // eslint-disable-next-line require-await
+    const next = async function () {
       actions.push('next');
       return 'meow';
     };
