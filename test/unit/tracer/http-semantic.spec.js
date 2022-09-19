@@ -69,7 +69,7 @@ describe('HttpInstrumentation', function() {
     provider = new BasicTracerProvider();
     provider.addSpanProcessor(new SimpleSpanProcessor(memoryExporter));
     span = provider.getTracer('default').startSpan('root');
-    shared = new Shared();
+    shared = new Shared({attr1: 'one'});
     sut = newHttpInstrumantationConfig(shared);
   });
 
@@ -89,7 +89,7 @@ describe('HttpInstrumentation', function() {
     it('should bind attributes to span', function() {
       shared.addSession(sessionId, new SessionData({ a: 'a' }));
       const mock = sinon.mock(span);
-      mock.expects('setAttributes').once().withArgs({ a: 'a' });
+      mock.expects('setAttributes').once().withArgs({ a: 'a', attr1: 'one' });
       sut.applyCustomAttributesOnSpan(span, pageSourceReq, response);
       should.exist(shared.getSessionData(sessionId));
     });
@@ -109,7 +109,7 @@ describe('HttpInstrumentation', function() {
     it('should delete session data if delete session request', function() {
       shared.addSession(sessionId, new SessionData({ a: 'a' }));
       const mock = sinon.mock(span);
-      mock.expects('setAttributes').once().withArgs({ a: 'a' });
+      mock.expects('setAttributes').once().withArgs({ a: 'a', attr1: 'one' });
       sut.applyCustomAttributesOnSpan(span, deleteSessionReq, response);
       should.not.exist(shared.getSessionData(sessionId));
     });
@@ -134,7 +134,7 @@ describe('HTTPTracerDelegator', function() {
     provider = new BasicTracerProvider();
     provider.addSpanProcessor(new SimpleSpanProcessor(memoryExporter));
     span = provider.getTracer('default').startSpan('root');
-    shared = new Shared();
+    shared = new Shared({attr1: 'one'});
     sut = new HTTPTracerDelegator(['deviceName', 'app'], shared);
   });
 
@@ -143,6 +143,7 @@ describe('HTTPTracerDelegator', function() {
       const result = {'value': [sessionId, caps]};
       const mock = sinon.mock(span);
       mock.expects('setAttributes').once().withArgs({
+        'attr1': 'one',
         'appium.caps.device_name': 'dev',
         'appium.caps.app': 'foo.apk',
         'appium.session.id': sessionId,

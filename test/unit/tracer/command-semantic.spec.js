@@ -30,7 +30,7 @@ describe('CommandTracerDelegator', function() {
     provider = new BasicTracerProvider();
     provider.addSpanProcessor(new SimpleSpanProcessor(memoryExporter));
     tracer = provider.getTracer('default');
-    sut = new CommandTracerDelegator(tracer, ['deviceName', 'app']);
+    sut = new CommandTracerDelegator(tracer, ['deviceName', 'app'], {attr1: 'one'});
   });
 
 
@@ -73,6 +73,7 @@ describe('CommandTracerDelegator', function() {
     const spans = memoryExporter.getFinishedSpans();
     should.equal(6, spans.length);
     const expectedAttr = {
+      attr1: 'one',
       ['appium.caps.app']: 'foo.apk',
       ['appium.caps.device_name']: 'dev',
       ['appium.session.id']: sessionId,
