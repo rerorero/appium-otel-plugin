@@ -37,14 +37,14 @@ describe('CommandTracerDelegator', function() {
   it('should put spans when receiving command', async function() {
     // create session
     // eslint-disable-next-line require-await
-    let next = async function next() { return { value: [sessionId, caps] }; };
+    let next = async () => ({ value: [sessionId, caps] });
     let res = await sut.delegateCreateSession(next, null, null, null, null);
     assert.deepEqual(res, { value: [sessionId, caps] });
 
     // command success
     res = await sut.delegateHandle(
       // eslint-disable-next-line require-await
-      async function next() { return 'success'; },
+      async () => 'success',
       { sessionId }, 'cmd1', 'arg1', 'arg2');
     assert.deepEqual(res, 'success');
 
@@ -52,21 +52,21 @@ describe('CommandTracerDelegator', function() {
     await expect(
       sut.delegateHandle(
         // eslint-disable-next-line require-await
-        async function next() { throw new Error('err'); },
+        async function() { throw new Error('err'); },
         { sessionId }, 'cmd2')
-    ).to.be.rejectedWith('err')
+    ).to.be.rejectedWith('err');
 
-    // non session command 
+    // non session command
     res = await sut.delegateHandle(
       // eslint-disable-next-line require-await
-      async function next() { return 'success'; },
+      async () => 'success',
       {}, 'cmd3', 'arg1');
     assert.deepEqual(res, 'success');
 
     // delete session
     res = await sut.delegateDeleteSession(
       // eslint-disable-next-line require-await
-      async function next() { return 'done'; },
+      async () => 'done',
       null, null);
     assert.deepEqual(res, 'done');
 
