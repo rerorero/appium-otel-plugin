@@ -86,14 +86,14 @@ describe('Collector', function() {
       assert.isAbove(ages[0], 999);
     });
 
-    it('should not start observing sessions if createSession is not called', async function() {
+    it('should not export zero until createSession is called', async function() {
       const met = await metricReader.collect();
 
       should.equal(met.errors.length, 0, met.errors);
       // session totals
-      assert.deepEqual([], extract(met, telemetry.METRIC_KEY_SESSION_NUM_TOTAL));
+      assert.deepEqual([0], extract(met, telemetry.METRIC_KEY_SESSION_NUM_TOTAL));
       // session oldest age
-      assert.deepEqual([], extract(met, telemetry.METRIC_OLDEST_SESSION_AGE));
+      assert.deepEqual([0], extract(met, telemetry.METRIC_OLDEST_SESSION_AGE));
     });
   });
 
