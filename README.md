@@ -9,6 +9,7 @@ Appium plugin to export Appium server metrics and traces using [OpenTelemetry](h
 appium plugin install --source=npm appium-otel-plugin
 
 # run appium with the plugin
+export OTEL_SERVICE_NAME=appium
 appium server --use-plugins=appium-otel-plugin
 ```
 
@@ -27,9 +28,10 @@ It can act as distributed tracing if you enabled OpenTelemetry http instruments 
 
 You can configure the plugin with environment variables.
 
-| Env        | Default | Desciption                         |
-| ---------- | ------- | ---------------------------------- |
-| DD_API_KEY |         | Datadog API key. This is required. |
+| Env                         | Default | Desciption                     |
+| --------------------------- | ------- | ------------------------------ |
+| APPIUM_OTEL_TRACE_ENABLED   | true    | Enable trace export if true.   |
+| APPIUM_OTEL_METRICS_ENABLED | true    | Enable metrics export if true. |
 
 ## Logs
 
