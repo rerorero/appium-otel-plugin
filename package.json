@@ -1,7 +1,7 @@
 {
   "name": "appium-otel-plugin",
   "version": "0.1.1",
-  "description": "Appium plugin to apply OpenTelemtry to Appium server",
+  "description": "Appium plugin to export Appium server metrics and traces using OpenTelemetry",
   "main": "index.js",
   "scripts": {
     "build": "babel lib --root-mode=upward --out-dir=build/lib",
@@ -33,10 +33,11 @@
   "dependencies": {
     "@opentelemetry/api": "^1.1.0",
     "@opentelemetry/exporter-metrics-otlp-http": "^0.33.0",
-    "@opentelemetry/exporter-trace-otlp-http": "^0.32.0",
+    "@opentelemetry/exporter-trace-otlp-http": "^0.33.0",
     "@opentelemetry/exporter-zipkin": "^1.6.0",
-    "@opentelemetry/instrumentation-express": "^0.30.0",
-    "@opentelemetry/instrumentation-http": "^0.32.0",
+    "@opentelemetry/instrumentation-express": "^0.31.1",
+    "@opentelemetry/instrumentation-http": "^0.33.0",
+    "@opentelemetry/sdk-node": "^0.33.0",
     "@opentelemetry/sdk-trace-node": "^1.6.0"
   },
   "peerDependencies": {
