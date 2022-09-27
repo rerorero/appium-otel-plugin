@@ -128,7 +128,7 @@ describe('Collector', function() {
       should.equal(met.errors.length, 0, met.errors);
       let expectAttr = [{
         attr1: 'one',
-        command_name: 'createSession',
+        command: 'createSession',
         status: 'success',
         device_name: 'dev',
         app: 'foo.apk'
@@ -146,7 +146,7 @@ describe('Collector', function() {
       should.equal(met.errors.length, 0, met.errors);
       expectAttr = [{
         attr1: 'one',
-        command_name: 'cmd1',
+        command: 'cmd1',
         status: 'success',
         device_name: 'dev',
         app: 'foo.apk'
@@ -164,7 +164,7 @@ describe('Collector', function() {
       should.equal(met.errors.length, 0, met.errors);
       expectAttr = [{
         attr1: 'one',
-        command_name: 'cmd2',
+        command: 'cmd2',
         status: 'error',
         device_name: 'dev',
         app: 'foo.apk'
@@ -181,7 +181,7 @@ describe('Collector', function() {
       should.equal(met.errors.length, 0, met.errors);
       expectAttr = [{
         attr1: 'one',
-        command_name: 'deleteSession',
+        command: 'deleteSession',
         status: 'success',
         device_name: 'dev',
         app: 'foo.apk'
@@ -202,7 +202,7 @@ describe('Collector', function() {
       // success
       const expectAttr = [{
         attr1: 'one',
-        command_name: 'createSession',
+        command: 'createSession',
         status: 'error',
       }];
       assert.deepEqual([1], extract(met, telemetry.METRIC_KEY_COMMAND_RESPONSES));
@@ -221,7 +221,7 @@ describe('Collector', function() {
       should.equal(met.errors.length, 0, met.errors);
       const expectAttr = [{
         attr1: 'one',
-        command_name: 'cmd1',
+        command: 'cmd1',
         status: 'success',
       }];
       assert.deepEqual([1], extract(met, telemetry.METRIC_KEY_COMMAND_RESPONSES));
