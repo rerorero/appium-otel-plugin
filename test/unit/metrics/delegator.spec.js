@@ -62,7 +62,7 @@ describe('Collector', function() {
     meter = provider.getMeter('test');
     collector = new Collector(meter, ['deviceName', 'app'], 100, { attr1: 'one' });
     delegator = new MetricsDelegator(collector);
-    collector.nowFunc = () => Date.now() - 1000; // delay
+    collector.nowFunc = () => Date.now() - 2000; // delay
   });
 
 
@@ -83,7 +83,7 @@ describe('Collector', function() {
       // session oldest age
       const ages = extract(met, telemetry.METRIC_OLDEST_SESSION_AGE);
       should.equal(1, ages.length);
-      assert.isAbove(ages[0], 999);
+      assert.isAbove(ages[0], 1);
     });
 
     it('should not export zero until createSession is called', async function() {
